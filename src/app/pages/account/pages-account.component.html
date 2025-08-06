@@ -1,0 +1,38 @@
+<div class="h-screen flex items-center justify-center">
+  <div class="container max-w-md my-8 p-8 bg-white shadow-md rounded-md">
+    <h1 class="text-3xl text-gray-600 font-bold mb-4 text-center">
+      Account Detail
+    </h1>
+
+    <div *ngIf="accountDetail$ | async as user">
+      <div class="text-center">
+        <div class="rounded-full bg-blue-500 my-4 text-4xl text-white inline-block px-6 py-4 font-bold">
+          {{ user.fullName[0] | uppercase }}
+        </div>
+      </div>
+
+      <hr class="py-4 border-slate-400" />
+
+      <div class="grid grid-cols-2 gap-4 items-center">
+        <div class="font-semibold">Full Name</div>
+        <div class="text-gray-600 font-bold">{{ user.fullName | titlecase }}</div>
+
+        <div class="font-semibold">Email</div>
+        <div class="text-gray-600 font-bold">{{ user.email }}</div>
+
+        <div class="font-semibold">Roles</div>
+        <div class="text-gray-600 font-bold">
+          <ul>
+            <li *ngFor="let role of user.roles">{{ role }}</li>
+          </ul>
+        </div>
+
+        <div class="font-semibold">Phone Number</div>
+        <div class="text-gray-800 font-medium">{{ user.phoneNumber }}</div>
+
+        <div class="font-semibold">Access Failed Count</div>
+        <div class="text-gray-800 font-medium">{{ user.accessFailedCount }}</div>
+      </div>
+    </div>
+  </div>
+</div>
